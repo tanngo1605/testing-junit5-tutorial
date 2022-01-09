@@ -28,8 +28,7 @@ class IndexControllerTest implements ControllerTests {
         assertEquals("index", controller.index());
         assertEquals("index", controller.index(), "Wrong View Returned");
 
-        assertEquals("index", controller.index(), () -> "Another Expensive Message " +
-                "Make me only if you have to");
+        assertEquals("index", controller.index(), () -> "Another Expensive Message " + "Make me only if you have to");
 
         assertThat(controller.index()).isEqualTo("index");
     }
@@ -67,13 +66,17 @@ class IndexControllerTest implements ControllerTests {
     @Test
     void testAssumptionTrue() {
 
+        System.out.println("Before assumption");
         assumeTrue("GURU".equalsIgnoreCase(System.getenv("GURU_RUNTIME")));
+        // if assume false, all the following tests are stopped
+        assertTrue(true);
     }
 
     @Test
     void testAssumptionTrueAssumptionIsTrue() {
 
         assumeTrue("GURU".equalsIgnoreCase("GURU"));
+        assertTrue(true);
     }
 
     @EnabledOnOs(OS.MAC)
