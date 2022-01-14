@@ -1,6 +1,4 @@
 package guru.springframework.sfgpetclinic;
-
-import java.util.Arrays;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -12,12 +10,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-@Tag("HTTP calls")
 public class RESTCall {
     RestTemplate restTemplate;
     ObjectMapper objectMapper;
@@ -47,6 +45,15 @@ public class RESTCall {
         });
         System.out.println(post.toString());
         System.out.println(result.getBody());
+
+    }
+
+    //Does not need @Test for @ParameterizedTest
+    @ParameterizedTest
+    @ValueSource(strings = { "abcabcbb", "pwwk" })
+    void test_(String val) {
+
+        System.out.println(val);
 
     }
 
