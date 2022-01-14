@@ -16,7 +16,7 @@ class PetTypeSDJpaServiceIT {
     @Test
     void findAll() {
         int index = 1;
-        while (index < 10_000_000) {
+        while (index < 500_000_000) {
             index++;
         }
     }
